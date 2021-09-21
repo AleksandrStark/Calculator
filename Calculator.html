@@ -1,0 +1,129 @@
+
+	<div class='js-calculator'> 
+		<div class='operations-block'>
+			<button class = 'operation-button' id='buttonPlus'>+</button>
+			<button class = 'operation-button' id='buttonMinus'>-</button>
+			<button class = 'operation-button' id='buttonMultiply'>*</button>
+			<button class = 'operation-button' id='buttonDevide'>/</button>
+		</div>
+		<div class='separator'>
+			<hr/>
+		</div>
+		<div class='inputs-block'>
+			<div class='input-block'>
+				<label>Number 1</label>
+				<input type='number' id='number1'/>
+			</div>
+			<div class='input-block'>
+				<label>Number 2</label>
+				<input type='number' id='number2'/>
+			</div>	
+		</div>
+	</div>
+
+	<script> 
+
+		//var buttonPlus = document.getElementById('buttonPlus');
+		//var buttonMinus = document.getElementById('buttonMinus');
+		//var buttonMultiply = document.getElementById('buttonMultiply');
+		//var buttonDevide = document.getElementById('buttonDevide');
+
+	
+		//var operationButtons = [buttonPlus, buttonMinus, buttonMultiply, buttonDevide]; 
+
+	        var operationButtons = document.getElementsByClassName('operation-button'); //сразу выдает нам массив данных
+
+
+		var input1 = document.getElementById('number1');
+		var input2 = document.getElementById('number2');
+
+				
+
+		function makeOperation(operationCode) {
+				
+			var number1 = Number(input1.value);
+			var number2 = Number(input2.value);
+			
+			if (operationCode === '+') {
+				var result= number1 + number2;
+			} 
+			else if (operationCode === '-') {
+				var result= number1 - number2;
+			}
+			else if (operationCode === '*') {
+				var result= number1 * number2;
+			}
+			else if (operationCode === '/') {
+				var result= number1 / number2;
+			}
+			else {
+				window.alert('operation is unknown')
+			}
+			window.alert(result);
+		}
+
+
+
+		function onOperationButtonClick(eventObject) {
+		
+		var clickedElement = eventObject.currentTarget;
+
+		var operation = clickedElement.innerHTML;
+
+		makeOperation(operation);
+
+		}
+
+
+		
+		
+		//массив		
+		
+
+		for (var i = 0; i < operationButtons.length; i++) {
+
+			var button = operationButtons[i];
+			button.addEventListener('click', onOperationButtonClick);
+
+		}
+ // итерация - тело цикла - мы хотим для индекса пока он меньше длинны этого массива мы хотим выполнять данную функцию.
+
+		//++ - увеличение i на единицу
+
+
+
+
+	</script>	
+
+
+
+	<style> 
+		.js-calculator {
+			width: 500px;
+			margin: 0 auto;
+			text-align: center;
+			background-color: aliceblue;
+			padding: 20px;
+			border: 1px solid black;
+		}	
+			
+		.js-calculator .operations-block button {
+			height: 40px;
+			width: 40px;
+			margin: 20;
+		}
+		
+		.js-calculator .inputs-block .input-block {
+			display: inline-block;
+			padding: 10px;
+		}
+		
+
+		.js-calculator .inputs-block .input-block label {
+			display: block;
+		}
+
+ 
+
+
+	</style>
